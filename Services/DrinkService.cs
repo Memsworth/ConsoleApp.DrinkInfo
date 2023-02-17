@@ -15,20 +15,10 @@ public class DrinkService
     
     public async Task<Categories?> GetCategories() => await CallApi<Categories>("list.php?c=list");
 
-    private async Task<T?> CallApi<T>(string requestString) where T : class
+    private async Task<T?> CallApi<T>(string requestString) 
     {
         var response = await Client.ApiClient.GetStreamAsync(requestString);
-        /*
-        try
-        {
-            response.EnsureSuccessStatusCode();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }*/
-        
+
         var data =  await JsonSerializer.DeserializeAsync<T>(response);
         return data;
     }
