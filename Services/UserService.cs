@@ -39,7 +39,6 @@ public class UserService
         return input;
     }
 
-
     public async Task GetDrinkDetail(string drinkId)
     {
         var drinkDetail = await DrinkService.GetDrinkDetail(drinkId);
